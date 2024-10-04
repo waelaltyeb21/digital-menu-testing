@@ -2,8 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "main": "Public/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "dev": "node --watch Public/index.js Public/Server.js"
+    "dev": "node --watch Public/index.js"
   },
   "keywords": [],
   "author": "",

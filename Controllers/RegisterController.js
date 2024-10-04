@@ -8,6 +8,7 @@ const RegisterController = {
     console.log(email, password);
     try {
       const [supervisor] = await Supervisor.find({ email: email });
+      console.log(supervisor);
       //   ------------------------------------------------
       // Hashing
       //   ------------------------------------------------

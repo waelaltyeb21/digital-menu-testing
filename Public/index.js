@@ -28,20 +28,18 @@ const io = new Server(server, {
 });
 module.exports = io;
 // -------------------------------------------------------------------
-// io.setMaxListeners(20);
+io.setMaxListeners(20);
 // -------------------------------------------------------------------
 // Socket.io
 io.on("connection", (socket) => {
-  console.log("New Connection Stablish!");
   io.emit("connection", "Welcome To Our Humble Restaurant!");
   // -----------------------------------------
-  // -----------------------------------------
   io.on("disconnect", () => {
-    console.log("The Client Has Left");
     io.emit("disconnect", "The Client Has Left");
   });
+  // -----------------------------------------
   io.on("error", (error) => {
-    console.error(error);
+    io.emit("disconnect", error);
   });
 });
 // -------------------------------------------------------------------
@@ -85,6 +83,7 @@ mongoose
   .connect(MONGO_URI)
   .then(() => {
     console.log("Connected To DB!");
-    server.listen(PORT, () => console.log(`Server Running On Port ${PORT}`));
+    server.listen(5000, () => console.log(`Server Running On Port ${5000}`));
+    app.listen(PORT, () => console.log(`Server Running On Port ${PORT}`));
   })
   .catch((err) => console.log("Something Went Wrong!", err));
